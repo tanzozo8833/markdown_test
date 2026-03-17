@@ -1,8 +1,8 @@
-name: Jira Gemini Analysis
+name: Jira Gemini 3.1 Pro Analysis
 
 on:
   repository_dispatch:
-    types: [jira-webhook] # Phải khớp với event_type bạn đặt ở Jira Automation
+    types: [jira-webhook]
 
 jobs:
   analyze:
@@ -14,18 +14,17 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
-      - name: Install Libs
-        run: pip install jira google-generativeai
+      - name: Install Dependencies
+        run: |
+          pip install jira google-generativeai
 
-      - name: Run Analysis Script
+      - name: Run Script
         env:
-          # Truyền các secret vào môi trường chạy
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           JIRA_SERVER: ${{ secrets.JIRA_SERVER }}
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-          # Lấy Ticket ID từ payload Jira gửi sang
+          JIRA_API_TOKEN: ${{ secrets.JIRA_SECRET_2 }}
           TICKET_ID: ${{ github.event.client_payload.issue.key }}
         run: python scripts/analyze_ticket.py
