@@ -1,0 +1,14 @@
+name: Test My First Runner
+
+# Kích hoạt khi bạn nhấn nút "Run workflow" trên giao diện GitHub
+on: workflow_dispatch 
+
+jobs:
+  hello-job:
+    runs-on: ubuntu-latest # Đây là lệnh yêu cầu GitHub cấp 1 Runner Ubuntu
+    steps:
+      - name: Say Hello
+        run: echo "Chào bạn! Runner đang chạy trên máy ảo của GitHub."
+
+      - name: Check Python Version
+        run: python --version
