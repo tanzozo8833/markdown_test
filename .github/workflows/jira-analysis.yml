@@ -25,6 +25,6 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           JIRA_SERVER: ${{ secrets.JIRA_SERVER }}
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_SECRET_2 }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           TICKET_ID: ${{ github.event.client_payload.issue.key }}
         run: python scripts/analyze_ticket.py
