@@ -31,7 +31,7 @@ def main():
         genai.configure(api_key=gemini_key)
         
         # SỬ DỤNG MODEL CHÍNH XÁC TỪ DANH SÁCH BẠN QUÉT ĐƯỢC
-        model = genai.GenerativeModel('gemini-3.1-pro-preview')
+        model = genai.GenerativeModel('gemini-2.5-flash')
 
         prompt = f"""
         Bạn là một Chuyên gia phân tích hệ thống cao cấp (Senior Business Analyst & Developer).
